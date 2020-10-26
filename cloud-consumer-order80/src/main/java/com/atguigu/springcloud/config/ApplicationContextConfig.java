@@ -15,8 +15,8 @@ public class ApplicationContextConfig {
      * @return
      */
 
-    //@LoadBalanced
     @Bean
+    //@LoadBalanced
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
