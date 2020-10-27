@@ -5,10 +5,13 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @RestController
@@ -18,8 +21,8 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    //@Resource
-    //private DiscoveryClient discoveryClient;
+    @Resource
+    private DiscoveryClient discoveryClient;
 
 
     @Value("${server.port}")
@@ -49,7 +52,7 @@ public class PaymentController {
 
     }
 
-    /*@GetMapping("/payment/discovery")
+    @GetMapping("/payment/discovery")
     public Object discovery(){
         List<String> services=discoveryClient.getServices();
         for (String service:services){
@@ -60,7 +63,7 @@ public class PaymentController {
             log.info(serviceInstance.getHost()+"\t"+serviceInstance.getInstanceId()+"\t"+serviceInstance.getPort()+"\t"+serviceInstance.getUri());
         }
         return this.discoveryClient;
-    }*/
+    }
 
 
 }
